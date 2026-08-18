@@ -4,108 +4,659 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Giới thiệu bản thân - Quang Trần</title>
+    <title>Quang Trần | Personal Portfolio</title>
 
     <style>
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #f4f6f8;
-            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+            line-height: 1.6;
         }
 
-        /* ================= HEADER ================= */
+        button,
+        input {
+            font-family: inherit;
+        }
 
-        header {
-            background: linear-gradient(135deg, #007bff, #00c6ff);
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           HEADER / NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #e8ebf2;
+
+            padding: 16px 30px;
+        }
+
+        .nav-inner {
+            max-width: 1150px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1769ff;
+        }
+
+        .logo span {
+            color: #172033;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #536078;
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1769ff;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            max-width: 1150px;
+            margin: 45px auto 30px;
+
+            padding: 55px;
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(82, 148, 255, 0.35),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(0, 198, 255, 0.20),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eef6ff,
+                    #ffffff
+                );
+
+            border: 1px solid #e1eaf8;
+
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+
+            align-items: center;
+
+            gap: 50px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(30, 80, 150, 0.10);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hello {
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border-radius: 30px;
+
+            background: #ffffff;
+
+            color: #1769ff;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+
+            line-height: 1.05;
+
+            margin-bottom: 15px;
+
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #1769ff;
+        }
+
+        .hero-description {
+            color: #657089;
+
+            max-width: 650px;
+
+            font-size: 17px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-btn {
+            text-decoration: none;
+
+            padding: 12px 20px;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .hero-btn.primary {
+            background: #1769ff;
             color: white;
-            text-align: center;
-            padding: 60px 20px;
+
+            box-shadow:
+                0 8px 20px rgba(23, 105, 255, 0.25);
         }
 
-        header h1 {
-            font-size: 42px;
-            margin-bottom: 12px;
+        .hero-btn.primary:hover {
+            transform: translateY(-2px);
+            background: #0958e8;
         }
 
-        header p {
-            font-size: 20px;
+        .hero-btn.secondary {
+            background: white;
+            color: #1769ff;
+
+            border: 1px solid #d9e4f6;
         }
 
-        /* ================= CONTAINER ================= */
+        .hero-btn.secondary:hover {
+            background: #f2f7ff;
+        }
+
+
+        /* =====================================================
+           AVATAR
+        ===================================================== */
+
+        .avatar-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-box {
+            position: relative;
+
+            width: 260px;
+            height: 300px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-bg {
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1769ff,
+                    #00c6ff
+                );
+
+            opacity: 0.12;
+        }
+
+        .avatar {
+            position: relative;
+
+            width: 190px;
+            height: 230px;
+
+            object-fit: cover;
+
+            border-radius: 95px 95px 35px 35px;
+
+            border: 7px solid white;
+
+            box-shadow:
+                0 20px 45px rgba(23, 105, 255, 0.22);
+
+            background: #dceaff;
+        }
+
+        .student-badge {
+            position: absolute;
+
+            right: 0;
+            bottom: 20px;
+
+            background: white;
+
+            padding: 14px 18px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.12);
+
+            min-width: 190px;
+        }
+
+        .student-badge small {
+            display: block;
+
+            color: #8a94a8;
+
+            font-size: 11px;
+
+            margin-bottom: 2px;
+        }
+
+        .student-badge strong {
+            color: #1769ff;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
 
         .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 1150px;
+            margin: auto;
+            padding: 15px 25px 50px;
         }
 
-        /* ================= CARD ================= */
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .section-title {
+            margin-bottom: 22px;
+        }
+
+        .section-title small {
+            display: block;
+
+            color: #1769ff;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 5px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+
+            color: #172033;
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
 
         .card {
             background: white;
+
+            border: 1px solid #e8ebf2;
+
+            border-radius: 22px;
+
             padding: 30px;
+
             margin-bottom: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+            box-shadow:
+                0 10px 35px rgba(30, 45, 80, 0.06);
+
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 40px rgba(30, 45, 80, 0.09);
         }
 
         .card h2 {
-            color: #007bff;
-            margin-bottom: 18px;
+            color: #1769ff;
+
+            font-size: 22px;
+
+            margin-bottom: 16px;
         }
 
         .card p {
-            line-height: 1.7;
-        }
+            color: #5e687c;
 
-        /* ================= HỌC VẤN ================= */
-
-        .education p {
             margin: 8px 0;
         }
 
-        /* ================= SKILLS ================= */
+
+        /* =====================================================
+           INTRODUCTION
+        ===================================================== */
+
+        .intro-grid {
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr;
+
+            gap: 20px;
+        }
+
+        .intro-main {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #f5f9ff
+                );
+        }
+
+        .intro-main p {
+            font-size: 16px;
+        }
+
+        .info-box {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .info-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 14px 16px;
+
+            background: #f7f9fc;
+
+            border-radius: 12px;
+        }
+
+        .info-row span:first-child {
+            color: #7a8498;
+
+            font-size: 13px;
+        }
+
+        .info-row strong {
+            color: #26334a;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           EDUCATION
+        ===================================================== */
+
+        .education-box {
+            display: grid;
+
+            grid-template-columns: 90px 1fr;
+
+            gap: 20px;
+
+            align-items: center;
+        }
+
+        .education-icon {
+            width: 80px;
+            height: 80px;
+
+            border-radius: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #eaf3ff;
+
+            font-size: 35px;
+        }
+
+        .education-content h3 {
+            font-size: 20px;
+
+            color: #24324a;
+
+            margin-bottom: 5px;
+        }
+
+        .education-content p {
+            margin: 4px 0;
+        }
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
 
         .skills {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 10px;
         }
 
         .skill {
-            background: #007bff;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 20px;
+            padding: 10px 17px;
+
+            border-radius: 30px;
+
+            background: #eef5ff;
+
+            border: 1px solid #d9e8ff;
+
+            color: #1769ff;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
             transition: 0.2s;
         }
 
         .skill:hover {
+            color: white;
+
+            background: #1769ff;
+
             transform: translateY(-3px);
-            background: #0056b3;
         }
 
-        /* ================= PROJECT ================= */
 
-        .project-list p {
-            margin: 10px 0;
+        /* =====================================================
+           PROJECT
+        ===================================================== */
+
+        .project-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
         }
 
-        /* ================= CONTACT ================= */
+        .project {
+            padding: 20px;
 
-        .contact p {
-            margin: 10px 0;
+            border-radius: 15px;
+
+            background: #f8faff;
+
+            border: 1px solid #e6edf8;
+
+            transition: 0.2s;
         }
 
-        /* ==================================================
-           WEBSITE CỦA SINH VIÊN
-        ================================================== */
+        .project:hover {
+            border-color: #bcd7ff;
+
+            transform: translateY(-3px);
+        }
+
+        .project-icon {
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+        .project h3 {
+            font-size: 16px;
+
+            margin-bottom: 6px;
+
+            color: #26344d;
+        }
+
+        .project p {
+            font-size: 13px;
+
+            margin: 0;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .contact-item {
+            text-decoration: none;
+
+            padding: 18px;
+
+            border-radius: 14px;
+
+            background: #f8faff;
+
+            border: 1px solid #e6edf8;
+
+            color: #26344d;
+
+            transition: 0.2s;
+        }
+
+        .contact-item:hover {
+            border-color: #bcd7ff;
+
+            transform: translateY(-3px);
+
+            color: #1769ff;
+        }
+
+        .contact-item span {
+            display: block;
+
+            color: #8a94a8;
+
+            font-size: 12px;
+
+            margin-bottom: 4px;
+        }
+
+        .contact-item strong {
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           WEBSITE STUDENT
+        ===================================================== */
 
         .website-box {
             margin-top: 20px;
@@ -113,72 +664,106 @@
 
         .website-form {
             display: grid;
-            grid-template-columns: 1fr 1.5fr auto;
+
+            grid-template-columns:
+                1fr 1.5fr auto;
+
             gap: 10px;
+
             margin-bottom: 20px;
         }
 
         .website-form input {
             width: 100%;
+
             padding: 13px 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 15px;
+
+            border: 1px solid #d8deea;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
             outline: none;
-        }
 
-        .website-form input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
-        }
-
-        /* ================= NÚT THÊM ================= */
-
-        .btn-add {
-            border: none;
-            background: #0b4b87;
-            color: white;
-            padding: 13px 20px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
             transition: 0.2s;
         }
 
+        .website-form input:focus {
+            border-color: #1769ff;
+
+            box-shadow:
+                0 0 0 3px rgba(
+                    23,
+                    105,
+                    255,
+                    0.08
+                );
+        }
+
+
+        /* ADD BUTTON */
+
+        .btn-add {
+            border: none;
+
+            background: #1769ff;
+
+            color: white;
+
+            padding: 13px 20px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+
+            white-space: nowrap;
+        }
+
         .btn-add:hover {
-            background: #073967;
+            background: #0958e8;
+
             transform: translateY(-2px);
         }
 
-        /* ================= DANH SÁCH ================= */
 
-        .website-result {
-            width: 100%;
-        }
+        /* EMPTY */
 
         .empty-message {
             text-align: center;
+
             padding: 25px;
-            border: 1px dashed #ccc;
-            border-radius: 10px;
-            color: #888;
+
+            border: 1px dashed #d6dce7;
+
+            border-radius: 12px;
+
+            color: #8a94a8;
+
+            background: #fafbfe;
         }
 
-        /* ================= MỘT WEBSITE ================= */
+
+        /* WEBSITE ITEM */
 
         .website-item {
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
             padding: 18px;
 
             margin-top: 10px;
 
-            border: 1px solid #e5e5e5;
+            border: 1px solid #e4e9f2;
 
-            border-radius: 10px;
+            border-radius: 14px;
 
             background: white;
 
@@ -188,78 +773,104 @@
         }
 
         .website-item:hover {
-            background: #f1f8ff;
-            border-color: #b9ddff;
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.12);
+            background: #f6faff;
+
+            border-color: #bcd7ff;
+
+            box-shadow:
+                0 8px 25px rgba(
+                    23,
+                    105,
+                    255,
+                    0.08
+                );
+
             transform: translateY(-2px);
         }
 
         .website-info {
             flex: 1;
+
             min-width: 0;
         }
 
         .student-name {
-            font-size: 17px;
+            font-size: 16px;
+
             font-weight: bold;
-            color: #173f68;
-            margin-bottom: 7px;
+
+            color: #263a59;
+
+            margin-bottom: 5px;
         }
 
         .website-link {
-            color: #007bff;
-            font-size: 14px;
+            color: #1769ff;
+
+            font-size: 13px;
+
             word-break: break-all;
         }
 
-        /* ================= NÚT WEBSITE ================= */
+
+        /* WEBSITE BUTTONS */
 
         .website-actions {
             display: flex;
+
             gap: 8px;
+
             margin-left: 15px;
         }
 
         .website-actions button {
             border: none;
+
             padding: 9px 13px;
-            border-radius: 7px;
-            font-size: 14px;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+
             font-weight: bold;
-            cursor: pointer;
+
             transition: 0.2s;
         }
 
         .btn-open {
-            background: #e8f4ff;
-            color: #0865a5;
+            background: #eaf4ff;
+
+            color: #1769ff;
         }
 
         .btn-open:hover {
-            background: #cfeaff;
+            background: #d5eaff;
         }
 
         .btn-edit {
-            background: #fff3d6;
-            color: #a96d00;
+            background: #fff5dc;
+
+            color: #a56b00;
         }
 
         .btn-edit:hover {
-            background: #ffe7aa;
+            background: #ffe9ad;
         }
 
         .btn-delete {
-            background: #ffe8e8;
+            background: #ffe9e9;
+
             color: #dc3545;
         }
 
         .btn-delete:hover {
-            background: #ffd1d1;
+            background: #ffd4d4;
         }
 
-        /* ==================================================
+
+        /* =====================================================
            MODAL
-        ================================================== */
+        ===================================================== */
 
         .modal-overlay {
             display: none;
@@ -268,11 +879,13 @@
 
             inset: 0;
 
-            background: rgba(0, 0, 0, 0.55);
+            background:
+                rgba(13, 25, 45, 0.58);
 
             z-index: 9999;
 
             align-items: center;
+
             justify-content: center;
 
             padding: 20px;
@@ -284,66 +897,88 @@
 
         .modal {
             width: 100%;
+
             max-width: 450px;
 
             background: white;
 
-            border-radius: 15px;
+            border-radius: 20px;
 
             padding: 30px;
 
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            box-shadow:
+                0 20px 70px rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
 
-            animation: showModal 0.2s ease;
+            animation:
+                showModal 0.2s ease;
         }
 
         @keyframes showModal {
+
             from {
                 opacity: 0;
-                transform: scale(0.9);
+
+                transform:
+                    translateY(15px)
+                    scale(0.96);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1);
+
+                transform:
+                    translateY(0)
+                    scale(1);
             }
         }
 
         .modal h3 {
-            color: #173f68;
-            font-size: 22px;
-            margin-bottom: 12px;
+            color: #26344d;
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
         }
 
         .modal p {
-            color: #666;
-            line-height: 1.6;
+            color: #737d91;
+
             margin-bottom: 20px;
         }
 
         .modal input {
             width: 100%;
+
             padding: 13px;
 
             margin-bottom: 12px;
 
-            border: 1px solid #ccc;
+            border: 1px solid #d8deea;
 
-            border-radius: 8px;
+            border-radius: 9px;
 
             outline: none;
 
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .modal input:focus {
-            border-color: #007bff;
+            border-color: #1769ff;
         }
 
         .modal-buttons {
             display: flex;
+
             justify-content: flex-end;
+
             gap: 10px;
+
+            margin-top: 8px;
         }
 
         .modal-btn {
@@ -351,56 +986,102 @@
 
             padding: 10px 18px;
 
-            border-radius: 8px;
+            border-radius: 9px;
 
             font-weight: bold;
-
-            cursor: pointer;
         }
 
         .cancel-btn {
-            background: #eee;
+            background: #eef0f4;
+
             color: #555;
         }
 
         .cancel-btn:hover {
-            background: #ddd;
+            background: #dfe2e8;
         }
 
         .save-btn {
-            background: #007bff;
+            background: #1769ff;
+
             color: white;
         }
 
         .save-btn:hover {
-            background: #0056b3;
+            background: #0958e8;
         }
 
         .confirm-btn {
             background: #dc3545;
+
             color: white;
         }
 
         .confirm-btn:hover {
-            background: #b52a37;
+            background: #b82b39;
         }
 
-        /* ================= FOOTER ================= */
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
             text-align: center;
-            background: #222;
-            color: white;
-            padding: 20px;
-            margin-top: 30px;
+
+            background: #111827;
+
+            color: #aeb7c8;
+
+            padding: 25px;
+
+            margin-top: 20px;
+
+            font-size: 13px;
         }
 
-        /* ================= MOBILE ================= */
+        footer strong {
+            color: white;
+        }
 
-        @media (max-width: 750px) {
 
-            header h1 {
-                font-size: 30px;
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                padding: 40px 25px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .avatar-area {
+                order: -1;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
 
             .website-form {
@@ -411,9 +1092,53 @@
                 width: 100%;
             }
 
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 14px 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin: 20px 15px;
+
+                border-radius: 22px;
+            }
+
+            .container {
+                padding: 10px 15px 40px;
+            }
+
+            .card {
+                padding: 22px;
+
+                border-radius: 17px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .education-box {
+                grid-template-columns: 1fr;
+            }
+
+            .education-icon {
+                width: 65px;
+                height: 65px;
+            }
+
             .website-item {
                 flex-direction: column;
+
                 align-items: stretch;
+
                 gap: 15px;
             }
 
@@ -424,191 +1149,661 @@
             .website-actions button {
                 flex: 1;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- ================= HEADER ================= -->
 
-    <header>
-        <h1>Xin chào, tôi là Quang Trần 👋</h1>
-        <p>Sinh viên Công nghệ thông tin</p>
-    </header>
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
 
+    <nav class="navbar">
 
-    <div class="container">
+        <div class="nav-inner">
 
-        <!-- ================= GIỚI THIỆU ================= -->
+            <div class="logo">
+                Quang<span>.</span>
+            </div>
 
-        <div class="card">
+            <ul class="nav-links">
 
-            <h2>👨‍💻 Giới thiệu</h2>
+                <li>
+                    <a href="#gioi-thieu">
+                        Giới thiệu
+                    </a>
+                </li>
 
-            <p>
-                Xin chào! Tôi là Quang Trần, hiện đang là sinh viên
-                ngành Công nghệ thông tin. Tôi yêu thích lập trình,
-                thiết kế website và tìm hiểu các công nghệ mới.
-            </p>
+                <li>
+                    <a href="#hoc-van">
+                        Học vấn
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#ky-nang">
+                        Kỹ năng
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#du-an">
+                        Dự án
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#website">
+                        Website
+                    </a>
+                </li>
+
+            </ul>
 
         </div>
 
+    </nav>
 
-        <!-- ================= HỌC VẤN ================= -->
 
-        <div class="card education">
 
-            <h2>🎓 Học vấn</h2>
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
 
-            <p>
-                <strong>Trường:</strong>
-                Đại học Hải Phòng
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hello">
+                👋 XIN CHÀO, TÔI LÀ
+            </div>
+
+            <h1>
+                Quang <span>Trần</span>
+            </h1>
+
+            <p class="hero-description">
+
+                Sinh viên Công nghệ thông tin,
+                yêu thích lập trình web, thiết kế giao diện
+                và khám phá những công nghệ mới.
+
             </p>
 
-            <p>
-                <strong>Ngành:</strong>
-                Công nghệ thông tin
-            </p>
+            <div class="hero-buttons">
 
-            <p>
-                <strong>Mục tiêu:</strong>
-                Trở thành một lập trình viên chuyên nghiệp.
-            </p>
+                <a
+                    href="#gioi-thieu"
+                    class="hero-btn primary"
+                >
+                    Khám phá bản thân →
+                </a>
 
-        </div>
-
-
-        <!-- ================= KỸ NĂNG ================= -->
-
-        <div class="card">
-
-            <h2>💻 Kỹ năng</h2>
-
-            <div class="skills">
-
-                <div class="skill">HTML</div>
-
-                <div class="skill">CSS</div>
-
-                <div class="skill">JavaScript</div>
-
-                <div class="skill">Java</div>
-
-                <div class="skill">Python</div>
-
-                <div class="skill">SQL</div>
-
-                <div class="skill">Git & GitHub</div>
+                <a
+                    href="#website"
+                    class="hero-btn secondary"
+                >
+                    🌐 Website sinh viên
+                </a>
 
             </div>
 
         </div>
 
 
-        <!-- ================= DỰ ÁN ================= -->
+        <!-- =================================================
+             ẢNH
+        ================================================= -->
 
-        <div class="card project-list">
+        <div class="avatar-area">
 
-            <h2>🚀 Dự án</h2>
+            <div class="avatar-box">
 
-            <p>
-                • Website bán linh kiện máy tính PC STORE
-            </p>
+                <div class="avatar-bg"></div>
 
-            <p>
-                • Website bán giày
-            </p>
+                <!--
+                    ĐỔI avatar.jpg THÀNH TÊN ẢNH CỦA BẠN
+                    Ví dụ:
+                    <img src="anhquang.jpg">
+                -->
 
-            <p>
-                • Hệ thống quản lý sinh viên
-            </p>
+                <img
+                    src="avatar.jpg"
+                    alt="Ảnh Quang Trần"
+                    class="avatar"
+                >
 
-            <p>
-                • Dự án nhận diện khuôn mặt bằng AI
-            </p>
+                <div class="student-badge">
 
-        </div>
+                    <small>
+                        MÃ SINH VIÊN
+                    </small>
 
+                    <strong>
+                        233148201010
+                    </strong>
 
-        <!-- ================= LIÊN HỆ ================= -->
+                </div>
 
-        <div class="card contact">
-
-            <h2>📞 Liên hệ</h2>
-
-            <p>
-                📧 Email: your-email@gmail.com
-            </p>
-
-            <p>
-                📱 Số điện thoại: 0123 456 789
-            </p>
-
-            <p>
-                🌐 GitHub: github.com/yourusername
-            </p>
+            </div>
 
         </div>
 
+    </section>
 
-        <!-- ==================================================
-             WEBSITE CỦA SINH VIÊN
-        ================================================== -->
 
-        <div class="card">
 
-            <h2>🌐 Website của sinh viên</h2>
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
 
-            <div class="website-box">
+    <div class="container">
 
-                <div class="website-form">
 
-                    <input
-                        type="text"
-                        id="studentName"
-                        placeholder="Tên sinh viên"
-                    >
+        <!-- =================================================
+             GIỚI THIỆU
+        ================================================= -->
 
-                    <input
-                        type="text"
-                        id="websiteLink"
-                        placeholder="https://example.com"
-                    >
+        <section id="gioi-thieu">
 
-                    <button
-                        type="button"
-                        class="btn-add"
-                        id="addButton"
-                    >
-                        + Thêm website
-                    </button>
+            <div class="section-title">
+
+                <small>
+                    ABOUT ME
+                </small>
+
+                <h2>
+                    Giới thiệu bản thân
+                </h2>
+
+            </div>
+
+
+            <div class="intro-grid">
+
+                <div class="card intro-main">
+
+                    <h2>
+                        👨‍💻 Xin chào!
+                    </h2>
+
+                    <p>
+
+                        Tôi là <strong>Quang Trần</strong>,
+                        hiện đang là sinh viên ngành
+                        <strong>Công nghệ thông tin</strong>.
+
+                    </p>
+
+                    <p>
+
+                        Tôi yêu thích lập trình,
+                        thiết kế website và tìm hiểu
+                        các công nghệ mới.
+
+                    </p>
+
+                    <p>
+
+                        Mục tiêu của tôi là không ngừng
+                        học hỏi, nâng cao kỹ năng và trở thành
+                        một lập trình viên chuyên nghiệp.
+
+                    </p>
 
                 </div>
 
 
-                <div
-                    id="websiteResult"
-                    class="website-result"
-                ></div>
+                <div class="card">
+
+                    <h2>
+                        ✨ Thông tin
+                    </h2>
+
+                    <div class="info-box">
+
+                        <div class="info-row">
+
+                            <span>
+                                Họ tên
+                            </span>
+
+                            <strong>
+                                Quang Trần
+                            </strong>
+
+                        </div>
+
+                        <div class="info-row">
+
+                            <span>
+                                Mã sinh viên
+                            </span>
+
+                            <strong>
+                                233148201010
+                            </strong>
+
+                        </div>
+
+                        <div class="info-row">
+
+                            <span>
+                                Ngành
+                            </span>
+
+                            <strong>
+                                Công nghệ thông tin
+                            </strong>
+
+                        </div>
+
+                        <div class="info-row">
+
+                            <span>
+                                Định hướng
+                            </span>
+
+                            <strong>
+                                Web Developer
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
+
+
+
+        <!-- =================================================
+             HỌC VẤN
+        ================================================= -->
+
+        <section id="hoc-van">
+
+            <div class="section-title">
+
+                <small>
+                    EDUCATION
+                </small>
+
+                <h2>
+                    Học vấn
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="education-box">
+
+                    <div class="education-icon">
+                        🎓
+                    </div>
+
+                    <div class="education-content">
+
+                        <h3>
+                            Sinh viên Công nghệ thông tin
+                        </h3>
+
+                        <p>
+                            <strong>
+                                Trường:
+                            </strong>
+                            Đại học Hải Phòng
+                        </p>
+
+                        <p>
+                            <strong>
+                                Mã sinh viên:
+                            </strong>
+                            233148201010
+                        </p>
+
+                        <p>
+                            <strong>
+                                Mục tiêu:
+                            </strong>
+                            Trở thành một lập trình viên
+                            chuyên nghiệp.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             KỸ NĂNG
+        ================================================= -->
+
+        <section id="ky-nang">
+
+            <div class="section-title">
+
+                <small>
+                    SKILLS
+                </small>
+
+                <h2>
+                    Kỹ năng
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="skills">
+
+                    <div class="skill">
+                        HTML
+                    </div>
+
+                    <div class="skill">
+                        CSS
+                    </div>
+
+                    <div class="skill">
+                        JavaScript
+                    </div>
+
+                    <div class="skill">
+                        Java
+                    </div>
+
+                    <div class="skill">
+                        Python
+                    </div>
+
+                    <div class="skill">
+                        SQL
+                    </div>
+
+                    <div class="skill">
+                        Git & GitHub
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DỰ ÁN
+        ================================================= -->
+
+        <section id="du-an">
+
+            <div class="section-title">
+
+                <small>
+                    PROJECTS
+                </small>
+
+                <h2>
+                    Dự án của tôi
+                </h2>
+
+            </div>
+
+
+            <div class="project-grid">
+
+                <div class="project">
+
+                    <div class="project-icon">
+                        🖥️
+                    </div>
+
+                    <h3>
+                        PC STORE
+                    </h3>
+
+                    <p>
+                        Website bán linh kiện máy tính
+                        với giao diện thương mại điện tử.
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-icon">
+                        👟
+                    </div>
+
+                    <h3>
+                        Website bán giày
+                    </h3>
+
+                    <p>
+                        Xây dựng website giới thiệu
+                        và bán sản phẩm giày.
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Quản lý sinh viên
+                    </h3>
+
+                    <p>
+                        Hệ thống quản lý thông tin
+                        và điểm sinh viên.
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        Nhận diện khuôn mặt AI
+                    </h3>
+
+                    <p>
+                        Dự án ứng dụng AI để nhận diện
+                        khuôn mặt từ hình ảnh.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LIÊN HỆ
+        ================================================= -->
+
+        <section>
+
+            <div class="section-title">
+
+                <small>
+                    CONTACT
+                </small>
+
+                <h2>
+                    Liên hệ
+                </h2>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+                <a
+                    href="mailto:your-email@gmail.com"
+                    class="contact-item"
+                >
+
+                    <span>
+                        📧 EMAIL
+                    </span>
+
+                    <strong>
+                        your-email@gmail.com
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="tel:0123456789"
+                    class="contact-item"
+                >
+
+                    <span>
+                        📱 ĐIỆN THOẠI
+                    </span>
+
+                    <strong>
+                        0123 456 789
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="https://github.com/"
+                    target="_blank"
+                    class="contact-item"
+                >
+
+                    <span>
+                        🌐 GITHUB
+                    </span>
+
+                    <strong>
+                        GitHub của tôi
+                    </strong>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             WEBSITE CỦA SINH VIÊN
+        ================================================= -->
+
+        <section id="website">
+
+            <div class="section-title">
+
+                <small>
+                    STUDENT WEBSITES
+                </small>
+
+                <h2>
+                    🌐 Website của sinh viên
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="website-box">
+
+                    <div class="website-form">
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Tên sinh viên"
+                        >
+
+                        <input
+                            type="text"
+                            id="websiteLink"
+                            placeholder="https://example.com"
+                        >
+
+                        <button
+                            type="button"
+                            class="btn-add"
+                            id="addButton"
+                        >
+                            + Thêm website
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="websiteResult"
+                        class="website-result"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
 
     </div>
 
 
-    <!-- ================= FOOTER ================= -->
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
 
     <footer>
-        © 2026 Quang Trần | Personal Portfolio
+
+        © 2026
+        <strong>
+            Quang Trần
+        </strong>
+        | Personal Portfolio
+
     </footer>
 
 
-    <!-- ==================================================
+
+    <!-- =====================================================
          MODAL XÓA
-    ================================================== -->
+    ===================================================== -->
 
     <div
         id="deleteModal"
@@ -650,9 +1845,10 @@
     </div>
 
 
-    <!-- ==================================================
+
+    <!-- =====================================================
          MODAL SỬA
-    ================================================== -->
+    ===================================================== -->
 
     <div
         id="editModal"
@@ -702,15 +1898,16 @@
     </div>
 
 
-    <!-- ==================================================
+
+    <!-- =====================================================
          JAVASCRIPT
-    ================================================== -->
+    ===================================================== -->
 
     <script>
 
-        // ==========================================
-        // BIẾN
-        // ==========================================
+        /* ==========================================
+           DỮ LIỆU
+        ========================================== */
 
         let websites = [];
 
@@ -719,16 +1916,19 @@
         let editIndex = -1;
 
 
-        // ==========================================
-        // LẤY DỮ LIỆU TỪ LOCAL STORAGE
-        // ==========================================
+
+        /* ==========================================
+           LOAD DATA
+        ========================================== */
 
         function loadData() {
 
             try {
 
                 const data =
-                    localStorage.getItem("studentWebsites");
+                    localStorage.getItem(
+                        "studentWebsites"
+                    );
 
                 if (data) {
 
@@ -757,9 +1957,10 @@
         }
 
 
-        // ==========================================
-        // LƯU DỮ LIỆU
-        // ==========================================
+
+        /* ==========================================
+           SAVE DATA
+        ========================================== */
 
         function saveData() {
 
@@ -782,9 +1983,10 @@
         }
 
 
-        // ==========================================
-        // HIỂN THỊ DANH SÁCH
-        // ==========================================
+
+        /* ==========================================
+           HIỂN THỊ WEBSITE
+        ========================================== */
 
         function renderWebsites() {
 
@@ -793,11 +1995,8 @@
                     "websiteResult"
                 );
 
-
             result.innerHTML = "";
 
-
-            // Không có website
 
             if (websites.length === 0) {
 
@@ -812,19 +2011,17 @@
             }
 
 
-            // Có website
-
             websites.forEach(
                 function(website, index) {
 
                     const item =
-                        document.createElement("div");
+                        document.createElement(
+                            "div"
+                        );
 
                     item.className =
                         "website-item";
 
-
-                    // Bấm cả dòng để mở
 
                     item.addEventListener(
                         "click",
@@ -836,19 +2033,21 @@
                     );
 
 
-                    // ======================
-                    // THÔNG TIN
-                    // ======================
+                    /* THÔNG TIN */
 
                     const info =
-                        document.createElement("div");
+                        document.createElement(
+                            "div"
+                        );
 
                     info.className =
                         "website-info";
 
 
                     const name =
-                        document.createElement("div");
+                        document.createElement(
+                            "div"
+                        );
 
                     name.className =
                         "student-name";
@@ -858,7 +2057,9 @@
 
 
                     const link =
-                        document.createElement("div");
+                        document.createElement(
+                            "div"
+                        );
 
                     link.className =
                         "website-link";
@@ -872,21 +2073,24 @@
                     info.appendChild(link);
 
 
-                    // ======================
-                    // CÁC NÚT
-                    // ======================
+
+                    /* NÚT */
 
                     const actions =
-                        document.createElement("div");
+                        document.createElement(
+                            "div"
+                        );
 
                     actions.className =
                         "website-actions";
 
 
-                    // Nút mở
+                    /* MỞ */
 
                     const openBtn =
-                        document.createElement("button");
+                        document.createElement(
+                            "button"
+                        );
 
                     openBtn.type = "button";
 
@@ -909,10 +2113,12 @@
                     );
 
 
-                    // Nút sửa
+                    /* SỬA */
 
                     const editBtn =
-                        document.createElement("button");
+                        document.createElement(
+                            "button"
+                        );
 
                     editBtn.type = "button";
 
@@ -935,10 +2141,12 @@
                     );
 
 
-                    // Nút xóa
+                    /* XÓA */
 
                     const deleteBtn =
-                        document.createElement("button");
+                        document.createElement(
+                            "button"
+                        );
 
                     deleteBtn.type = "button";
 
@@ -968,14 +2176,9 @@
                     actions.appendChild(deleteBtn);
 
 
-                    // ======================
-                    // GHÉP VÀO DÒNG
-                    // ======================
-
                     item.appendChild(info);
 
                     item.appendChild(actions);
-
 
                     result.appendChild(item);
 
@@ -985,9 +2188,10 @@
         }
 
 
-        // ==========================================
-        // THÊM WEBSITE
-        // ==========================================
+
+        /* ==========================================
+           THÊM WEBSITE
+        ========================================== */
 
         function addWebsite() {
 
@@ -1009,8 +2213,6 @@
                 linkInput.value.trim();
 
 
-            // Kiểm tra tên
-
             if (name === "") {
 
                 alert(
@@ -1023,8 +2225,6 @@
 
             }
 
-
-            // Kiểm tra link
 
             if (link === "") {
 
@@ -1039,8 +2239,6 @@
             }
 
 
-            // Tự động thêm https
-
             if (
                 !link.startsWith("http://") &&
                 !link.startsWith("https://")
@@ -1052,8 +2250,6 @@
             }
 
 
-            // Thêm dữ liệu
-
             websites.push({
 
                 name: name,
@@ -1063,33 +2259,26 @@
             });
 
 
-            // Lưu
-
             saveData();
 
-
-            // Xóa ô nhập
 
             nameInput.value = "";
 
             linkInput.value = "";
 
 
-            // Hiển thị
-
             renderWebsites();
 
-
-            // Đưa con trỏ về ô tên
 
             nameInput.focus();
 
         }
 
 
-        // ==========================================
-        // MỞ WEBSITE
-        // ==========================================
+
+        /* ==========================================
+           MỞ WEBSITE
+        ========================================== */
 
         function openWebsite(index) {
 
@@ -1111,14 +2300,14 @@
         }
 
 
-        // ==========================================
-        // MỞ MODAL XÓA
-        // ==========================================
+
+        /* ==========================================
+           MODAL XÓA
+        ========================================== */
 
         function openDelete(index) {
 
             deleteIndex = index;
-
 
             document
                 .getElementById("deleteModal")
@@ -1128,14 +2317,9 @@
         }
 
 
-        // ==========================================
-        // ĐÓNG MODAL XÓA
-        // ==========================================
-
         function closeDelete() {
 
             deleteIndex = -1;
-
 
             document
                 .getElementById("deleteModal")
@@ -1144,10 +2328,6 @@
 
         }
 
-
-        // ==========================================
-        // XÁC NHẬN XÓA
-        // ==========================================
 
         function deleteWebsite() {
 
@@ -1173,9 +2353,10 @@
         }
 
 
-        // ==========================================
-        // MỞ MODAL SỬA
-        // ==========================================
+
+        /* ==========================================
+           MODAL SỬA
+        ========================================== */
 
         function openEdit(index) {
 
@@ -1209,14 +2390,9 @@
         }
 
 
-        // ==========================================
-        // ĐÓNG MODAL SỬA
-        // ==========================================
-
         function closeEdit() {
 
             editIndex = -1;
-
 
             document
                 .getElementById("editModal")
@@ -1225,10 +2401,6 @@
 
         }
 
-
-        // ==========================================
-        // LƯU SỬA
-        // ==========================================
 
         function saveEdit() {
 
@@ -1241,14 +2413,18 @@
 
             const name =
                 document
-                    .getElementById("editName")
+                    .getElementById(
+                        "editName"
+                    )
                     .value
                     .trim();
 
 
             let link =
                 document
-                    .getElementById("editLink")
+                    .getElementById(
+                        "editLink"
+                    )
                     .value
                     .trim();
 
@@ -1304,9 +2480,10 @@
         }
 
 
-        // ==========================================
-        // NÚT THÊM
-        // ==========================================
+
+        /* ==========================================
+           NÚT THÊM
+        ========================================== */
 
         document
             .getElementById("addButton")
@@ -1316,9 +2493,10 @@
             );
 
 
-        // ==========================================
-        // NÚT XÁC NHẬN XÓA
-        // ==========================================
+
+        /* ==========================================
+           NÚT XÓA
+        ========================================== */
 
         document
             .getElementById("confirmDelete")
@@ -1328,10 +2506,6 @@
             );
 
 
-        // ==========================================
-        // NÚT HỦY XÓA
-        // ==========================================
-
         document
             .getElementById("cancelDelete")
             .addEventListener(
@@ -1340,9 +2514,10 @@
             );
 
 
-        // ==========================================
-        // NÚT HỦY SỬA
-        // ==========================================
+
+        /* ==========================================
+           NÚT SỬA
+        ========================================== */
 
         document
             .getElementById("cancelEdit")
@@ -1352,10 +2527,6 @@
             );
 
 
-        // ==========================================
-        // NÚT LƯU SỬA
-        // ==========================================
-
         document
             .getElementById("saveEdit")
             .addEventListener(
@@ -1364,9 +2535,10 @@
             );
 
 
-        // ==========================================
-        // ENTER ĐỂ THÊM
-        // ==========================================
+
+        /* ==========================================
+           ENTER
+        ========================================== */
 
         document
             .getElementById("websiteLink")
@@ -1386,9 +2558,10 @@
             );
 
 
-        // ==========================================
-        // CLICK RA NGOÀI MODAL
-        // ==========================================
+
+        /* ==========================================
+           CLICK NGOÀI MODAL
+        ========================================== */
 
         document
             .getElementById("deleteModal")
@@ -1426,9 +2599,10 @@
             );
 
 
-        // ==========================================
-        // PHÍM ESC
-        // ==========================================
+
+        /* ==========================================
+           ESC
+        ========================================== */
 
         document.addEventListener(
             "keydown",
@@ -1448,9 +2622,10 @@
         );
 
 
-        // ==========================================
-        // CHẠY KHI MỞ TRANG
-        // ==========================================
+
+        /* ==========================================
+           CHẠY
+        ========================================== */
 
         loadData();
 
